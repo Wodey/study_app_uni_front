@@ -1,12 +1,10 @@
-from input import Ui_Input_win as InputPage
+from Smart.input_smart import Input_page_smart as FirstPage
 import sys
 from PyQt5 import QtWidgets
 
 app = QtWidgets.QApplication(sys.argv)
-page1 = QtWidgets.QWidget()
-ui = InputPage()
-ui.setupUi(page1)
-page1.show()
+window = FirstPage()
+window.show()
 
 sys.exit(app.exec_())
 
