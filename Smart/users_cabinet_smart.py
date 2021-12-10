@@ -3,13 +3,13 @@ from PyQt5 import QtWidgets
 import sys
 
 class Users_cabinet_smart(QtWidgets.QMainWindow, Dumb_users_cabinet):
-    def __init__(self, widget):
+    def __init__(self, widget=None):
         super().__init__()
         self.setupUi(self)
         self.widget = widget
-        self.pushButton.clicked.connect(self.prev_page)
-    def prev_page(self):
-        self.widget.setCurrentIndex(self.widget.currentIndex() - 1)
+        self.pushButton.clicked.connect(self.goto_page_1)
+    def goto_page_1(self):
+        self.widget.setCurrentIndex(0)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
