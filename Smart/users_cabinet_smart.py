@@ -9,7 +9,7 @@ class Users_cabinet_smart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         self.widget = widget
         self.pushButton.clicked.connect(self.goto_page_1)
     def goto_page_1(self):
-        self.widget.setCurrentIndex(0)
+        self.widget.close()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

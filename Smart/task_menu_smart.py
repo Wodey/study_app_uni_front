@@ -9,6 +9,7 @@ class Task_menu_smart(QtWidgets.QWidget, TaskMenu):
         self.widget = widget
         self.setupUi(self)
         self.pushButton.clicked.connect(self.OpenDialogWin)
+        self.pushButton_2.clicked.connect(self.goto_page_2)
     def goto_page_2(self):
         self.widget.setCurrentIndex(1)
     def OpenDialogWin(self):

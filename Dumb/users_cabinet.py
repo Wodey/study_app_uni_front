@@ -91,7 +91,7 @@ class Ui_Form(object):
         self.commandLinkButton_6.setText(_translate("Form", "Задача 6 - 5б"))
         self.label_2.setText(_translate("Form", "Счет:"))
         self.label_3.setText(_translate("Form", "0"))
-        self.pushButton.setText(_translate("Form", "Назад"))
+        self.pushButton.setText(_translate("Form", "Выйти"))
         self.label_4.setText(_translate("Form", "Пользователь:"))
         self.label_5.setText(_translate("Form", "Иван"))
         self.pushButton_2.setText(_translate("Form", "Сдаюсь"))

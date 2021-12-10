@@ -4,19 +4,24 @@ from Smart.task_menu_smart import Task_menu_smart as ThirdPage
 import sys
 from PyQt5 import QtWidgets
 
+class MainComponent(QtWidgets.QStackedWidget):
+    def __init__(self):
+        super().__init__()
+        page_2 = SecondPage(self)
+        page_3 = ThirdPage(self)
+
+        self.addWidget(page_2)
+        self.addWidget(page_3)
+
+        self.setFixedWidth(1000)
+        self.setFixedHeight(700)
+
 app = QtWidgets.QApplication(sys.argv)
-widget = QtWidgets.QStackedWidget()
+
+widget = MainComponent()
 
 page_1 = FirstPage(widget)
-page_2 = SecondPage(widget)
-page_3 = ThirdPage(widget)
+page_1.show()
 
-widget.addWidget(page_1)
-widget.addWidget(page_2)
-widget.addWidget(page_3)
-
-widget.show()
-widget.setFixedWidth(1000)
-widget.setFixedHeight(700)
 sys.exit(app.exec_())
 

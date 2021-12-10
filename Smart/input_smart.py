@@ -9,7 +9,8 @@ class Input_page_smart(QtWidgets.QWidget, Ui_Input_win):
         self.widget = widget
         self.pushButton_2.clicked.connect(self.goto_page_2)
     def goto_page_2(self):
-        self.widget.setCurrentIndex(1)
+        self.widget.show()
+        self.close()
 
 
 if __name__ == "__main__":
