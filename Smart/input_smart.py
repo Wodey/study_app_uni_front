@@ -9,12 +9,12 @@ class InputPageSmart(QtWidgets.QWidget, Ui_Input_win):
         super().__init__()
         self.setupUi(self)
         self.widget = widget
-        self.pushButton_2.clicked.connect(self.goto_page_2)
-
-    def goto_page_2(self):
-        self.widget.show()
-        self.close()
-
+        self.pushButton_2.clicked.connect(self.goto_main_page)
+        self.pushButton.clicked.connect(self.goto_input_page)
+    def goto_main_page(self):
+        self.widget.goto_2_main_component()
+    def goto_input_page(self):
+        self.widget.setCurrentIndex(1)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

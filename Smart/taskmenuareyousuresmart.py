@@ -7,7 +7,6 @@ class TaskMenuAreYouSureSmart(QtWidgets.QDialog, TaskMenuAreYouSure):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.h = 5
         self.pushButton_2.clicked.connect(self.close)
         self.pushButton.clicked.connect(self.send)
 
