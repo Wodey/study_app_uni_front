@@ -3,7 +3,6 @@ from PyQt5 import QtWidgets
 import sys
 
 # TODO Redesign a dump component
-# TODO Read a data from input form and save it
 class AdminCabinetSmart(QtWidgets.QWidget, Ui_Form):
     def __init__(self, widget=None):
         super().__init__()

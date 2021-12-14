@@ -16,9 +16,15 @@ class AdminInputSmart(QtWidgets.QWidget, Ui_Form):
         self.widget.setCurrentIndex(0)
 
     def goto_admin_page(self):
-        with open("admin.json", "w") as userf:
-            json.dump({"name": self.textEdit.toPlainText()}, userf)
-        self.widget.goto_2_main_component(2)
+        if self.check_credentials():
+            self.widget.goto_2_main_component(2)
+
+    def check_credentials(self) -> bool:
+        password = self.textEdit.toPlainText()
+        if password == "password123":
+            return True
+        self.label_2.show()
+        return False
 
 
 if __name__ == "__main__":
