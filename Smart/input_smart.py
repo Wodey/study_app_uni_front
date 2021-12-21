@@ -34,7 +34,8 @@ class InputPageSmart(QtWidgets.QWidget, Ui_Input_win):
             self.isUserExist = True
             return
         self.isUserExist = False
-        context.update_state({"uid": cleaned_data['uid']})
+        context.update_state({"uid": cleaned_data['uid'], "username": self.textEdit.toPlainText(), "score": 0})
+        print(context.get_state())
 
 
 if __name__ == "__main__":
