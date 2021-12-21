@@ -7,9 +7,6 @@ import sys
 from PyQt5 import QtWidgets, QtCore
 
 
-# TODO write code from input to file on the send button
-# TODO add run test button in designer
-# TODO add a way to run a function from the code with test arguments
 
 class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
     def __init__(self, widget=None):
