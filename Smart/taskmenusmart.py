@@ -7,7 +7,6 @@ import sys
 from PyQt5 import QtWidgets, QtCore
 
 
-
 class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
     def __init__(self, widget=None):
         super().__init__()
@@ -42,13 +41,26 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
     def run_code(self):
         code = self.textEdit.toPlainText()
         _translate = QtCore.QCoreApplication.translate
-        with open("code.py","w") as codefile:
+        with open("code.py", "w") as codefile:
             codefile.writelines(code)
         import code
         imp.reload(code)
         print(code.solution(self.data['tests'][0]['argument']))
         print(code.solution(self.data['tests'][1]['argument']))
         print(code.solution(self.data['tests'][2]['argument']))
+        self.label_6.setText(
+            f"Для f({self.data['tests'][0]['argument']}): {code.solution(self.data['tests'][0]['argument'])}")
+        self.label_9.setText(
+            f"Для f({self.data['tests'][1]['argument']}): {code.solution(self.data['tests'][1]['argument'])}")
+        self.label_10.setText(
+            f"Для f({self.data['tests'][2]['argument']}): {code.solution(self.data['tests'][2]['argument'])}")
+
+        if self.data['tests'][0]['value'] == code.solution(self.data['tests'][0]['argument']):
+            self.label_6.setStyleSheet("color: green")
+        else:
+            self.label_6.setStyleSheet("color: red")
+
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
