@@ -16,7 +16,7 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.pushButton.clicked.connect(self.open_dialog_win)
         self.pushButton_2.clicked.connect(self.goto_page_2)
         self.pushButton_3.clicked.connect(self.run_code)
-
+        self.isCodeRunError = False
         _translate = QtCore.QCoreApplication.translate
         self.label_6.setText(_translate("Form", f"Для f({self.data['tests'][0]['argument']}): "))
         self.label_7.setText(_translate("Form", f"Ожидается: {self.data['tests'][0]['value']}"))
@@ -43,11 +43,12 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         _translate = QtCore.QCoreApplication.translate
         with open("code.py", "w") as codefile:
             codefile.writelines(code)
-        import code
-        imp.reload(code)
-        print(code.solution(self.data['tests'][0]['argument']))
-        print(code.solution(self.data['tests'][1]['argument']))
-        print(code.solution(self.data['tests'][2]['argument']))
+        try:
+            import code
+            imp.reload(code)
+        except:
+            self.isCodeRunError = True
+
         self.label_6.setText(
             f"Для f({self.data['tests'][0]['argument']}): {code.solution(self.data['tests'][0]['argument'])}")
         self.label_9.setText(
@@ -60,6 +61,15 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         else:
             self.label_6.setStyleSheet("color: red")
 
+        if self.data['tests'][1]['value'] == code.solution(self.data['tests'][1]['argument']):
+            self.label_9.setStyleSheet("color: green")
+        else:
+            self.label_9.setStyleSheet("color: red")
+
+        if self.data['tests'][2]['value'] == code.solution(self.data['tests'][2]['argument']):
+            self.label_10.setStyleSheet("color: green")
+        else:
+            self.label_10.setStyleSheet("color: red")
 
 
 if __name__ == "__main__":

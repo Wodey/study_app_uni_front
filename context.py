@@ -18,5 +18,4 @@ class Context:
         return self.state
 
 
-
 context = Context()
