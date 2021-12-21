@@ -24,6 +24,9 @@ class Ui_Form(object):
         self.label.setObjectName("label")
         self.textBrowser = QtWidgets.QTextBrowser(Form)
         self.textBrowser.setGeometry(QtCore.QRect(60, 90, 861, 181))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.textBrowser.setFont(font)
         self.textBrowser.setObjectName("textBrowser")
         self.label_2 = QtWidgets.QLabel(Form)
         self.label_2.setGeometry(QtCore.QRect(60, 60, 201, 16))
@@ -44,7 +47,10 @@ class Ui_Form(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.textEdit = QtWidgets.QTextEdit(Form)
-        self.textEdit.setGeometry(QtCore.QRect(60, 360, 661, 401))
+        self.textEdit.setGeometry(QtCore.QRect(60, 360, 661, 381))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.textEdit.setFont(font)
         self.textEdit.setObjectName("textEdit")
         self.label_5 = QtWidgets.QLabel(Form)
         self.label_5.setGeometry(QtCore.QRect(780, 350, 161, 41))
@@ -106,6 +112,31 @@ class Ui_Form(object):
         font.setPointSize(10)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
+        self.label_12 = QtWidgets.QLabel(Form)
+        self.label_12.setGeometry(QtCore.QRect(680, 30, 161, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_12.setFont(font)
+        self.label_12.setObjectName("label_12")
+        self.label_13 = QtWidgets.QLabel(Form)
+        self.label_13.setGeometry(QtCore.QRect(680, 60, 201, 16))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_13.setFont(font)
+        self.label_13.setObjectName("label_13")
+        self.label_14 = QtWidgets.QLabel(Form)
+        self.label_14.setGeometry(QtCore.QRect(60, 760, 451, 21))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_14.setFont(font)
+        self.label_14.setStyleSheet("color: red")
+        self.label_14.setObjectName("label_14")
+        self.pushButton_4 = QtWidgets.QPushButton(Form)
+        self.pushButton_4.setGeometry(QtCore.QRect(480, 750, 241, 41))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setObjectName("pushButton_4")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -117,27 +148,32 @@ class Ui_Form(object):
         self.textBrowser.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">asdffsadf</p></body></html>"))
         self.label_2.setText(_translate("Form", "Задача 1 - 5б"))
         self.label_3.setText(_translate("Form", "Ваше Решение"))
         self.label_4.setText(_translate("Form", "Тщательно рекоммендуем писать код в IDE и сюда вставлять лишь готовое решение"))
         self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">def solution(x):</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    #write code here</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    #Пишите код здесь,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    #Вам надо, чтобы ваша функция возвращала                     #определенное значение, также нельзя менять ее                 #название и сигнатуру</p></body></html>"))
         self.label_5.setText(_translate("Form", "Вывод функции:"))
-        self.label_6.setText(_translate("Form", "Для f(): "))
+        self.label_6.setText(_translate("Form", "Для f(5): 12"))
         self.label_7.setText(_translate("Form", "Ожидается: 13"))
-        self.label_9.setText(_translate("Form", "Для f(): "))
-        self.label_8.setText(_translate("Form", "Ожидается: "))
-        self.label_10.setText(_translate("Form", "Для f(): "))
+        self.label_9.setText(_translate("Form", "Для f(2): 3"))
+        self.label_8.setText(_translate("Form", "Ожидается: 3"))
+        self.label_10.setText(_translate("Form", "Для f(2): 3"))
         self.label_11.setText(_translate("Form", "Ожидается: 3"))
         self.pushButton.setText(_translate("Form", "Отправить"))
         self.pushButton_2.setText(_translate("Form", "Назад в меню"))
         self.pushButton_3.setText(_translate("Form", "Запустить"))
+        self.label_12.setText(_translate("Form", "Стоимость задачи"))
+        self.label_13.setText(_translate("Form", "5 баллов"))
+        self.label_14.setText(_translate("Form", "Ошибка. У вас некорректный код"))
+        self.pushButton_4.setText(_translate("Form", "Вернуться к исходному"))
 
 
 if __name__ == "__main__":
