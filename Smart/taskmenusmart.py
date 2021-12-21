@@ -17,6 +17,9 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.pushButton_2.clicked.connect(self.goto_page_2)
         self.pushButton_3.clicked.connect(self.run_code)
         self.isCodeRunError = False
+        self.sol1 = ''
+        self.sol2 = ''
+        self.sol3 = ''
         _translate = QtCore.QCoreApplication.translate
         self.label_6.setText(_translate("Form", f"Для f({self.data['tests'][0]['argument']}): "))
         self.label_7.setText(_translate("Form", f"Ожидается: {self.data['tests'][0]['value']}"))
@@ -46,27 +49,30 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         try:
             import code
             imp.reload(code)
+            self.sol1 = code.solution(self.data['tests'][0]['argument'])
+            sol2 = code.solution(self.data['tests'][1]['argument'])
+            sol3 = code.solution(self.data['tests'][2]['argument'])
         except:
             self.isCodeRunError = True
 
         self.label_6.setText(
-            f"Для f({self.data['tests'][0]['argument']}): {code.solution(self.data['tests'][0]['argument'])}")
+            f"Для f({self.data['tests'][0]['argument']}): {self.sol1}")
         self.label_9.setText(
-            f"Для f({self.data['tests'][1]['argument']}): {code.solution(self.data['tests'][1]['argument'])}")
+            f"Для f({self.data['tests'][1]['argument']}): {self.sol2}")
         self.label_10.setText(
-            f"Для f({self.data['tests'][2]['argument']}): {code.solution(self.data['tests'][2]['argument'])}")
+            f"Для f({self.data['tests'][2]['argument']}): {self.sol3}")
 
-        if self.data['tests'][0]['value'] == code.solution(self.data['tests'][0]['argument']):
+        if self.data['tests'][0]['value'] == self.sol1:
             self.label_6.setStyleSheet("color: green")
         else:
             self.label_6.setStyleSheet("color: red")
 
-        if self.data['tests'][1]['value'] == code.solution(self.data['tests'][1]['argument']):
+        if self.data['tests'][1]['value'] == self.sol2:
             self.label_9.setStyleSheet("color: green")
         else:
             self.label_9.setStyleSheet("color: red")
 
-        if self.data['tests'][2]['value'] == code.solution(self.data['tests'][2]['argument']):
+        if self.data['tests'][2]['value'] == self.sol3:
             self.label_10.setStyleSheet("color: green")
         else:
             self.label_10.setStyleSheet("color: red")
