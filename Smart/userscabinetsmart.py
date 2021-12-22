@@ -12,12 +12,13 @@ from context import context
 class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
     def __init__(self, widget=None):
         super().__init__()
+        state = context.get_state()
         self.setupUi(self)
         self.tasks = []
         self.widget = widget
         self.receive_tasks()
+        self.label_3.setText(str(state['score']))
         self.pushButton.clicked.connect(self.goto_page_1)
-
         for index, i in enumerate(self.tasks):
             lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
             lb.setText(f"{i['name']} - {i['score']} баллов")
@@ -37,12 +38,32 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         self.widget.close()
 
     def receive_tasks(self):
-        r = requests.get("http://127.0.0.1:5000/get_tasks/61c23866b167e66f2988147a")
-        self.tasks = r.json()
+        uid = context.get_state()['uid']
+        try:
+            r = requests.get(f"http://127.0.0.1:5000/get_tasks/{uid}")
+            self.tasks = r.json()
+        except:
+            return
 
     def rerender(self):
         state = context.get_state()
         self.label_5.setText(state['username'])
+        self.label_3.setText(str(state['score']))
+        self.receive_tasks()
+
+
+        for index in range(6):
+            try:
+                lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
+                lb.hide()
+            except:
+                continue
+
+        for index, i in enumerate(self.tasks):
+            lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
+            lb.setText(f"{i['name']} - {i['score']} баллов")
+            lb.clicked.connect(self.goto_task(i['tid']))
+            lb.show()
 
 
 if __name__ == "__main__":

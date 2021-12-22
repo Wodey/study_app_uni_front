@@ -37,6 +37,7 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.setupUi(self)
         self.label_14.hide()
         self.pushButton.clicked.connect(self.open_dialog_win)
+        self.pushButton.setEnabled(False)
         self.pushButton_2.clicked.connect(self.goto_page_2)
         self.pushButton_3.clicked.connect(self.run_code)
         self.isCodeRunError = False
@@ -46,7 +47,7 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.pushButton_4.clicked.connect(self.backToInitial)
 
     def goto_page_2(self):
-        self.widget.setCurrentIndex(1)
+        self.widget.setCurrentIndex(0)
 
     def backToInitial(self):
         self.textEdit.setHtml(
@@ -61,9 +62,9 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#название и сигнатуру</p>"
             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\treturn 0</p></body></html>")
 
-    @staticmethod
-    def open_dialog_win():
-        dialog = DialogWin()
+    def open_dialog_win(self):
+        dialog = DialogWin({"tid": self.data['tid'], "score": int(self.data["score"])},
+                           lambda: self.widget.setCurrentIndex(0))
         dialog.exec_()
         dialog.show()
 
@@ -73,16 +74,16 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.textBrowser.setText(self.data['body'])
 
         self.textEdit.setHtml(
-                                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                         "p, li { white-space: pre-wrap; }\n"
-                                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-                                         f"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{self.data['initial']}</p>\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#Пишите код здесь,</p>\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#Вам надо, чтобы ваша функция возвращала\n"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#определенное значение, также нельзя менять ее"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#название и сигнатуру</p></body></html>"
-                                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\treturn 0</p></body></html>"                                         )
+            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+            "p, li { white-space: pre-wrap; }\n"
+            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+            f"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{self.data['initial']}</p>\n"
+            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#Пишите код здесь,</p>\n"
+            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#Вам надо, чтобы ваша функция возвращала\n"
+            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#определенное значение, также нельзя менять ее"
+            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\t#название и сигнатуру</p></body></html>"
+            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\treturn 0</p></body></html>")
 
         self.label_6.setText(f"Для f({self.data['tests'][0]['arguments']}): ")
         self.label_7.setText(f"Ожидается: {self.data['tests'][0]['value']}")
@@ -124,19 +125,23 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         self.label_10.setText(
             f"Для f({self.data['tests'][2]['arguments']}): {self.sol3}")
 
+        self.pushButton.setDisabled(False)
         if self.data['tests'][0]['value'] == self.sol1:
             self.label_6.setStyleSheet("color: green")
         else:
+            self.pushButton.setEnabled(False)
             self.label_6.setStyleSheet("color: red")
 
         if self.data['tests'][1]['value'] == self.sol2:
             self.label_9.setStyleSheet("color: green")
         else:
+            self.pushButton.setEnabled(False)
             self.label_9.setStyleSheet("color: red")
 
         if self.data['tests'][2]['value'] == self.sol3:
             self.label_10.setStyleSheet("color: green")
         else:
+            self.pushButton.setEnabled(False)
             self.label_10.setStyleSheet("color: red")
 
     def rerender(self):
@@ -144,6 +149,11 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         print(f"task menu state {state}")
         self.tid = state['tid']
         self.recieve_data()
+        self.pushButton.setEnabled(False)
+        self.label_6.setStyleSheet("color: black")
+        self.label_9.setStyleSheet("color: black")
+        self.label_10.setStyleSheet("color: black")
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
