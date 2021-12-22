@@ -5,6 +5,7 @@ from Smart.admin_input_smart import AdminInputSmart
 from Smart.admin_cabinet_smart import AdminCabinetSmart
 import sys
 from PyQt5 import QtWidgets
+from context import context
 
 
 # python -m PyQt5.uic.pyuic -x admin_input.ui -o admin_input.py
@@ -15,6 +16,10 @@ class MainComponent(QtWidgets.QStackedWidget):
         page_2 = SecondPage(self)
         page_3 = ThirdPage(self)
         page_4 = AdminCabinetSmart(self)
+
+        context.subscribe(page_2)
+        context.subscribe(page_3)
+        context.subscribe(page_4)
 
         self.addWidget(page_2)
         self.addWidget(page_3)
@@ -40,7 +45,6 @@ class InputWidgets(QtWidgets.QStackedWidget):
     def goto_2_main_component(self, page=0):
         self.widget.show()
         self.widget.setCurrentIndex(page)
-        print('index ' + str(page))
         self.close()
 
 

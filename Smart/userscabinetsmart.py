@@ -19,14 +19,11 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         self.widget = widget
         self.receive_tasks()
         self.pushButton.clicked.connect(self.goto_page_1)
-        print(f"it is {context.get_state()['username']}")
-        self.label_5.setText('Ho')
 
         for index, i in enumerate(self.tasks):
             lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
             lb.setText(f"{i['name']} - {i['score']} баллов")
             lb.show()
-        print(f"username of user is {context.get_state()['username']}")
     def goto_page_1(self):
         self.widget.close()
 
@@ -34,7 +31,10 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         r = requests.get("http://127.0.0.1:5000/get_tasks/61c23866b167e66f2988147a")
         self.tasks = r.json()
 
-
+    def rerender(self):
+        state = context.get_state()
+        self.label_5.setText(state['username'])
+        print(f"users cabinet state {state} ")
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = UsersCabinetSmart()

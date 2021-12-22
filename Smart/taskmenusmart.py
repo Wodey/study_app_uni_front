@@ -1,7 +1,7 @@
 import imp
 import json
 import requests
-import context
+from context import context
 from Dumb.task_menu import Ui_Form as TaskMenu
 from Smart.taskmenuareyousuresmart import TaskMenuAreYouSureSmart as DialogWin
 import sys
@@ -72,7 +72,6 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         # self.data = json.loads()
         r = requests.get("http://127.0.0.1:5000/get_task/61c2379db167e66f29881478")
         self.data = r.json()
-        print(self.data)
 
     def run_code(self):
         code = self.textEdit.toPlainText()
@@ -112,6 +111,9 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
             self.label_10.setStyleSheet("color: green")
         else:
             self.label_10.setStyleSheet("color: red")
+    def rerender(self):
+        state = context.get_state()
+        print(f"task menu state {state}")
 
 
 if __name__ == "__main__":
