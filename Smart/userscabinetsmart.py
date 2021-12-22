@@ -4,10 +4,8 @@ import sys
 import requests
 from context import context
 
-# TODO Read list from the file and generate on its basis a list with links to task_menu
+
 # TODO new design in qt-designer
-# TODO Read information about user from the file
-# TODO add "сдаюсь" button functionality and a page for it of course
 # TODO add timer in designer
 # TODO add timer functionality
 
@@ -23,7 +21,18 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         for index, i in enumerate(self.tasks):
             lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
             lb.setText(f"{i['name']} - {i['score']} баллов")
+            lb.clicked.connect(self.goto_task(i['tid']))
             lb.show()
+
+    def goto_task(self, tid):
+        task_id = tid
+
+        def goto_task_inner():
+            context.update_state({"tid": task_id})
+            self.widget.setCurrentIndex(1)
+
+        return goto_task_inner
+
     def goto_page_1(self):
         self.widget.close()
 
@@ -34,7 +43,8 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
     def rerender(self):
         state = context.get_state()
         self.label_5.setText(state['username'])
-        print(f"users cabinet state {state} ")
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = UsersCabinetSmart()

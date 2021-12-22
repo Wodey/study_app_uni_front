@@ -7,7 +7,8 @@ class Context:
             "username": None,
             "uid": None,
             "score": 0,
-            "current_task": None
+            "current_task": None,
+            "tid": None
         }
         self.subscribers = []
 
