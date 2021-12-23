@@ -1,5 +1,6 @@
 import pickle
-
+import os
+from dotenv import load_dotenv
 
 class Context:
     def __init__(self):

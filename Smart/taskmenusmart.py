@@ -6,7 +6,10 @@ from Dumb.task_menu import Ui_Form as TaskMenu
 from Smart.taskmenuareyousuresmart import TaskMenuAreYouSureSmart as DialogWin
 import sys
 from PyQt5 import QtWidgets, QtCore
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
     def __init__(self, widget=None):
@@ -94,7 +97,7 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
 
     def recieve_data(self):
         try:
-            r = requests.get(f"http://127.0.0.1:5000/get_task/{self.tid}")
+            r = requests.get(f"{os.environ.get('URI')}/get_task/{self.tid}")
             self.data = r.json()
             self.setup_dynamic_content()
 

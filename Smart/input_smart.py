@@ -4,7 +4,10 @@ from PyQt5 import QtWidgets
 import sys
 import requests
 from context import context
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class InputPageSmart(QtWidgets.QWidget, Ui_Input_win):
     def __init__(self, widget=None):
@@ -29,7 +32,7 @@ class InputPageSmart(QtWidgets.QWidget, Ui_Input_win):
 
     def send_data_and_set_id(self):
         print({"username": self.textEdit.toPlainText()})
-        r = requests.post('http://127.0.0.1:5000/register', json={"username": self.textEdit.toPlainText()})
+        r = requests.post(f'{os.environ.get("URI")}/register', json={"username": self.textEdit.toPlainText()})
         if (cleaned_data := r.json()) == 1:
             self.isUserExist = True
             return

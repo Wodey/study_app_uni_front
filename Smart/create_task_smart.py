@@ -2,7 +2,10 @@ from Dumb.create_task import Ui_Dialog
 from PyQt5 import QtWidgets
 import requests
 import sys
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class CreateTaskSmart(QtWidgets.QDialog, Ui_Dialog):
     def __init__(self, tid=""):
@@ -30,7 +33,7 @@ class CreateTaskSmart(QtWidgets.QDialog, Ui_Dialog):
 
     def receive_task(self):
         try:
-            r = requests.get(f"http://127.0.0.1:5000/get_task/{self.tid}")
+            r = requests.get(f"{os.environ.get('URI')}/get_task/{self.tid}")
             self.data = r.json()
         except:
             return

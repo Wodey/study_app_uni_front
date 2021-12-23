@@ -3,6 +3,12 @@ import sys
 from PyQt5 import QtWidgets
 import requests
 from context import context
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 class TaskMenuAreYouSureSmart(QtWidgets.QDialog, TaskMenuAreYouSure):
     def __init__(self, data, cb):
         super().__init__()
@@ -17,7 +23,7 @@ class TaskMenuAreYouSureSmart(QtWidgets.QDialog, TaskMenuAreYouSure):
         state = context.get_state()
         uid = state['uid']
         score = state['score']
-        r = requests.post(f"http://127.0.0.1:5000/deliver_task/{uid}", json=self.data)
+        r = requests.post(f"{os.environ.get('URI')}/deliver_task/{uid}", json=self.data)
         print(f"r is {r.json()}")
         if r.json() == 0:
             context.update_state({"score": score + self.data['score']})

@@ -7,8 +7,8 @@ import sys
 from PyQt5 import QtWidgets
 from context import context
 
-
 # python -m PyQt5.uic.pyuic -x admin_input.ui -o admin_input.py
+
 
 class MainComponent(QtWidgets.QStackedWidget):
     def __init__(self):

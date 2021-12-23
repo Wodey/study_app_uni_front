@@ -3,11 +3,14 @@ from PyQt5 import QtWidgets
 import sys
 import requests
 from context import context
-
+from dotenv import load_dotenv
+import os
 
 # TODO new design in qt-designer
 # TODO add timer in designer
 # TODO add timer functionality
+
+load_dotenv()
 
 class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
     def __init__(self, widget=None):
@@ -40,7 +43,7 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
     def receive_tasks(self):
         uid = context.get_state()['uid']
         try:
-            r = requests.get(f"http://127.0.0.1:5000/get_tasks/{uid}")
+            r = requests.get(f"{os.environ.get('URI')}/get_tasks/{uid}")
             self.tasks = r.json()
         except:
             return
