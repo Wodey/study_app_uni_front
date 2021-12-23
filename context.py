@@ -29,7 +29,6 @@ class Context:
 
     def subscribe(self, subscriber):
         self.subscribers.append(subscriber)
-
     def notify(self):
         for i in self.subscribers:
             i.rerender()

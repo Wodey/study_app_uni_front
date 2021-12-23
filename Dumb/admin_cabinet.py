@@ -25,7 +25,7 @@ class Ui_Form(object):
         self.commandLinkButton = QtWidgets.QCommandLinkButton(Form)
         self.commandLinkButton.setGeometry(QtCore.QRect(210, 220, 201, 48))
         self.commandLinkButton.setStyleSheet("font-size: 18px")
-        self.commandLinkButton.setObjectName("commandLinkButton")
+        self.commandLinkButton.setObjectName("commandLinkButton_1")
         self.commandLinkButton_2 = QtWidgets.QCommandLinkButton(Form)
         self.commandLinkButton_2.setGeometry(QtCore.QRect(210, 270, 161, 48))
         self.commandLinkButton_2.setStyleSheet("font-size: 18px")
