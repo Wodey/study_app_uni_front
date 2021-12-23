@@ -17,17 +17,24 @@ class Ui_Dialog(object):
         self.textEdit = QtWidgets.QTextEdit(Dialog)
         self.textEdit.setGeometry(QtCore.QRect(50, 400, 501, 251))
         self.textEdit.setObjectName("textEdit")
+        self.textEdit.setText('textEdit')
+
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(260, 160, 271, 31))
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setText('lineEdit')
+
         self.spinBox = QtWidgets.QSpinBox(Dialog)
         self.spinBox.setGeometry(QtCore.QRect(390, 290, 91, 31))
         self.spinBox.setStyleSheet("font-size: 24px")
         self.spinBox.setObjectName("spinBox")
+        self.spinBox.setValue(1)
+
         self.spinBox_2 = QtWidgets.QSpinBox(Dialog)
         self.spinBox_2.setGeometry(QtCore.QRect(330, 220, 81, 31))
         self.spinBox_2.setStyleSheet("font-size: 24px")
         self.spinBox_2.setObjectName("spinBox_2")
+        self.spinBox_2.setValue(2)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(50, 140, 201, 61))
         self.label.setStyleSheet("font-size: 24px\n"
@@ -61,21 +68,33 @@ class Ui_Dialog(object):
         self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_2.setGeometry(QtCore.QRect(580, 400, 113, 31))
         self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_2.setText("lineEdit_2")
+
         self.lineEdit_3 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_3.setGeometry(QtCore.QRect(720, 400, 113, 31))
         self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEdit_3.setText("lineEdit_3")
+
         self.lineEdit_4 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_4.setGeometry(QtCore.QRect(580, 470, 113, 31))
         self.lineEdit_4.setObjectName("lineEdit_4")
+        self.lineEdit_4.setText("lineEdit_4")
+
         self.lineEdit_5 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_5.setGeometry(QtCore.QRect(720, 470, 113, 31))
         self.lineEdit_5.setObjectName("lineEdit_5")
+        self.lineEdit_5.setText("lineEdit_5")
+
         self.lineEdit_6 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_6.setGeometry(QtCore.QRect(580, 540, 113, 31))
         self.lineEdit_6.setObjectName("lineEdit_6")
+        self.lineEdit_6.setText("lineEdit_6")
+
         self.lineEdit_7 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_7.setGeometry(QtCore.QRect(720, 540, 113, 31))
         self.lineEdit_7.setObjectName("lineEdit_7")
+        self.lineEdit_7.setText("lineEdit_7")
+
         self.label_6 = QtWidgets.QLabel(Dialog)
         self.label_6.setGeometry(QtCore.QRect(590, 280, 231, 51))
         self.label_6.setStyleSheet("font-size: 24px")
