@@ -3,9 +3,12 @@ from Smart.userscabinetsmart import UsersCabinetSmart as SecondPage
 from Smart.taskmenusmart import TaskMenuSmart as ThirdPage
 from Smart.admin_input_smart import AdminInputSmart
 from Smart.admin_cabinet_smart import AdminCabinetSmart
+from Smart.score_page_smart import ScorePageSmart
+
 import sys
 from PyQt5 import QtWidgets
 from context import context
+
 
 # python -m PyQt5.uic.pyuic -x admin_input.ui -o admin_input.py
 
@@ -16,14 +19,17 @@ class MainComponent(QtWidgets.QStackedWidget):
         page_2 = SecondPage(self)
         page_3 = ThirdPage(self)
         page_4 = AdminCabinetSmart(self)
+        page_5 = ScorePageSmart(self)
 
         context.subscribe(page_2)
         context.subscribe(page_3)
         context.subscribe(page_4)
+        context.subscribe(page_5)
 
         self.addWidget(page_2)
         self.addWidget(page_3)
         self.addWidget(page_4)
+        self.addWidget(page_5)
 
         self.setFixedWidth(1000)
         self.setFixedHeight(700)

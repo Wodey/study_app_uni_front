@@ -18,8 +18,12 @@ class AdminCabinetSmart(QtWidgets.QWidget, Ui_Form):
         self.widget = widget
         self.pushButton_3.clicked.connect(self.widget.close)
         self.pushButton_2.clicked.connect(self.task_edit)
-
+        self.pushButton_4.clicked.connect(self.endlesson)
         self.rerender()
+
+    def endlesson(self):
+        context.notify()
+        self.widget.setCurrentIndex(3)
 
     def goto_edit_task(self, tid):
         task_id = tid
