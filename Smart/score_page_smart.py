@@ -71,7 +71,7 @@ class ScorePageSmart(QtWidgets.QWidget, Ui_Form):
 
     def rerender(self):
         self.receive_users()
-
+        print(self.users)
         for index in range(12):
             try:
                 lb = self.findChild(QtWidgets.QLabel, f"label_{index + 1}")
@@ -79,7 +79,7 @@ class ScorePageSmart(QtWidgets.QWidget, Ui_Form):
             except:
                 continue
 
-        for index, i in enumerate(self.users):
+        for index, i in enumerate(self.users[::-1]):
             try:
                 lb = self.findChild(QtWidgets.QLabel, f"label_{index + 1}")
                 lb.setText(f"{index + 1}. {i['name']} - {i['score']}")

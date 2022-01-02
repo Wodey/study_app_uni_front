@@ -106,6 +106,8 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
 
     def run_code(self):
         code = self.textEdit.toPlainText()
+        self.isCodeRunError = False
+        self.label_14.hide()
         _translate = QtCore.QCoreApplication.translate
         with open("code.py", "w") as codefile:
             codefile.writelines(code)
@@ -151,6 +153,8 @@ class TaskMenuSmart(QtWidgets.QWidget, TaskMenu):
         state = context.get_state()
         print(f"task menu state {state}")
         self.tid = state['tid']
+        self.isCodeRunError = False
+        self.label_14.hide()
         self.recieve_data()
         self.pushButton.setEnabled(False)
         self.label_6.setStyleSheet("color: black")
