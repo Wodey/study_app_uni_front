@@ -21,7 +21,7 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         self.widget = widget
         self.receive_tasks()
         self.label_3.setText(str(state['score']))
-        self.pushButton.clicked.connect(self.goto_page_1)
+        self.pushButton_3.clicked.connect(self.goto_page_1)
         for index, i in enumerate(self.tasks):
             lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
             lb.setText(f"{i['name']} - {i['score']} баллов")
@@ -55,9 +55,16 @@ class UsersCabinetSmart(QtWidgets.QMainWindow, Dumb_users_cabinet):
         self.receive_tasks()
 
 
-        for index in range(6):
+        for index in range(20):
             try:
                 lb = self.findChild(QtWidgets.QCommandLinkButton, f"commandLinkButton_{index + 1}")
+                lb.hide()
+            except:
+                continue
+
+        for index in range(7, 17):
+            try:
+                lb = self.findChild(QtWidgets.QLabel, f"label_{index}")
                 lb.hide()
             except:
                 continue
