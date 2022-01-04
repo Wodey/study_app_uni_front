@@ -79,7 +79,7 @@ class ScorePageSmart(QtWidgets.QWidget, Ui_Form):
             except:
                 continue
 
-        for index, i in enumerate(self.users[::-1]):
+        for index, i in enumerate(self.users):
             try:
                 lb = self.findChild(QtWidgets.QLabel, f"label_{index + 1}")
                 lb.setText(f"{index + 1}. {i['name']} - {i['score']}")
