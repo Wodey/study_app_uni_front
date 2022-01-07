@@ -25,7 +25,7 @@ class Ui_Form(object):
         self.commandLinkButton = QtWidgets.QCommandLinkButton(Form)
         self.commandLinkButton.setGeometry(QtCore.QRect(210, 220, 201, 48))
         self.commandLinkButton.setStyleSheet("font-size: 18px")
-        self.commandLinkButton.setObjectName("commandLinkButton_1")
+        self.commandLinkButton.setObjectName("commandLinkButton")
         self.commandLinkButton_2 = QtWidgets.QCommandLinkButton(Form)
         self.commandLinkButton_2.setGeometry(QtCore.QRect(210, 270, 161, 48))
         self.commandLinkButton_2.setStyleSheet("font-size: 18px")
@@ -58,22 +58,9 @@ class Ui_Form(object):
         font.setPointSize(10)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(610, 400, 171, 51))
-        self.pushButton.setObjectName("pushButton")
         self.pushButton_4 = QtWidgets.QPushButton(Form)
         self.pushButton_4.setGeometry(QtCore.QRect(610, 470, 171, 51))
         self.pushButton_4.setObjectName("pushButton_4")
-        self.lcdNumber = QtWidgets.QLCDNumber(Form)
-        self.lcdNumber.setGeometry(QtCore.QRect(650, 340, 81, 41))
-        self.lcdNumber.setStyleSheet("color: rgb(255, 0, 4);\n"
-"background-color: #ddd;\n"
-"")
-        self.lcdNumber.setObjectName("lcdNumber")
-        self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(650, 280, 81, 61))
-        self.label_2.setStyleSheet("font-size: 32px")
-        self.label_2.setObjectName("label_2")
         self.line = QtWidgets.QFrame(Form)
         self.line.setGeometry(QtCore.QRect(490, 190, 20, 321))
         self.line.setStyleSheet("width: 5px;")
@@ -96,9 +83,7 @@ class Ui_Form(object):
         self.commandLinkButton_5.setText(_translate("Form", "Задача 5 - 5б"))
         self.pushButton_2.setText(_translate("Form", "Добавить еще"))
         self.pushButton_3.setText(_translate("Form", "Выйти"))
-        self.pushButton.setText(_translate("Form", "Начать урок"))
         self.pushButton_4.setText(_translate("Form", "Закончить урок"))
-        self.label_2.setText(_translate("Form", "Timer"))
 
 
 if __name__ == "__main__":
